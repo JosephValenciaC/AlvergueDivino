@@ -1,0 +1,21 @@
+{% extends 'inicio/encabezado.html' %} {% block titulo %} Contacto {% endblock %} {% comment %} Contenido Cursos {% endcomment %} {% block contenido %}
+
+<div class="card card-body m-5" style="background-color: rgba(64, 124, 229, 0.527);">
+    <div class="card-title">
+        <h5 class="text-center">Envia un mensaje</h5>
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ingresa tu Nombre">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Ingresa tu Correo">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Deja tu Mensaje</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    <button type="button" class="btn btn-outline-primary p-1" disabled>Enviar</button>
+</div>
+{% endblock %}

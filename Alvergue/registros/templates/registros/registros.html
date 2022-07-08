@@ -1,0 +1,46 @@
+{% extends 'inicio/encabezado.html' %} {% block titulo %} Medicina {% endblock %} {% comment %} Contenido Cursos {% endcomment %} {% block contenido %}
+<br><br>
+
+<div class="card-body m-5" style="background-color: rgba(64, 124, 229, 0.527);">
+    <div class="card-title">
+        <h1 class="text-center" style="font-style:none;">Medicamentos</h1>
+    </div>
+    <table class="table table-striped ">
+        <thead>
+            <tr>
+                <th>Imagen</th>
+                <th>Categoria</th>
+                <th>Nombre del Medicamento</th>
+                <th>Clave</th>
+                <th>Descripcion</th>
+                <th>Fecha de Caduc.</th>
+                <th>Stock</th>
+                <th>Status</th>
+                <th>Registros</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for medicamento in medicamentos %}
+            <tr>
+                <td class="text-center ">
+                    <image src="{{medicamento.imagen.url }} " alt="{{ medicamento.NombreMedic }} " class="img-fluid " width="100 ">
+                </td>
+                <td>{{ medicamento.categoria }}</td>
+                <td>{{ medicamento.NombreMedic }}</td>
+                <td>{{ medicamento.clave }}</td>
+                <td>{{ medicamento.Descripcion }}</td>
+                <td>{{ medicamento.FechaCad }}</td>
+                <td>{{ medicamento.stock }}</td>
+                <td>{{ medicamento.status }}</td>
+                <td>{{ medicamento.created }}</td>
+            </tr>
+            {% endfor %}
+
+    </table>
+</div>
+</div>
+
+
+
+{% endblock%}

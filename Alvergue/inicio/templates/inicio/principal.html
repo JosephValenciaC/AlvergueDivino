@@ -1,0 +1,36 @@
+{% block titulo %} {% endblock %} {% comment %} PRINCIPAL {% endcomment %} {% block contenido %} {% load static%}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Alvergue Divino</title>
+    <link rel="stylesheet" href="{% static 'css/master.css'%}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="text">
+        <center>
+        </center>
+    </div>
+    <div class="login-box">
+        <img src="{% static 'img/logo.png' %}" class="avatar" alt="Avatar Image">
+        <br><br>
+        <div class="card-car-body">
+            <h1>Bienvenido a Albergue Divino</h1>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <a href="{% url 'Registros' %}" class="btn btn-primary" type="button">Ingresar</a>
+            </div>
+        </div>
+
+        </form>
+    </div>
+
+    {% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+
+</html>
