@@ -1,7 +1,7 @@
 from email import message
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from .models import Medicamentos, Archivos
-from .forms import FormArchivos
+from .forms import FormArchivos, FormEditar
 from django.contrib import messages 
 
 
@@ -15,8 +15,9 @@ def archivos(request):
             fechaCad =request.POST['fechaCad']
             stock =request.POST['stock']
             status =request.POST['status']
+            precio =request.POST['precio']
             archivo =request.FILES['archivo']
-            insert = Archivos(NombreMedic=NombreMedic, categoria=categoria ,descripcion=descripcion, fechaCad = fechaCad, stock=stock, status = status ,archivo=archivo)
+            insert = Archivos(NombreMedic=NombreMedic, categoria=categoria ,descripcion=descripcion, fechaCad = fechaCad, stock=stock, status = status, precio = precio ,archivo=archivo)
             insert.save()
             medicamentos = Archivos.objects.all()
             return render(request, 'registros/registros.html', {'medicamentos':medicamentos})
@@ -28,3 +29,17 @@ def archivos(request):
 def consultasSQL(request):
     medicamentos=Archivos.objects.raw('SELECT id, NombreMedic, categoria, descripcion, fechaCad, status, archivo FROM registros_archivos')
     return render (request, 'registros/registros.html', {'medicamentos':medicamentos})
+
+def consultarMedicamento(request, id):
+    medicamento = Archivos.objects.get(id=id)
+    return render(request, 'registros/formSalida.html', {'medicamento': medicamento})
+
+# Editar
+def editarSalida(request, id):
+    medicamento = get_object_or_404(Archivos, id=id)
+    form = FormEditar(request.POST, instance=medicamento)
+    if form.is_valid():
+        form.save()
+        medicamentos = Archivos.objects.all()
+        return render(request, 'registros/registros.html', {'medicamentos': medicamentos})
+    return render(request, 'registros/formSalida.html', {'medicamento':medicamento })

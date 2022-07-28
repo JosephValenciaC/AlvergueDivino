@@ -1,4 +1,5 @@
 
+from django import forms
 from .models import Archivos
 from django.forms import ClearableFileInput, ModelForm
 
@@ -8,7 +9,11 @@ class CustomClearableFieldInput(ClearableFileInput):
 class FormArchivos(ModelForm):
     class Meta:
         model = Archivos
-        fields = ('NombreMedic', 'categoria', 'descripcion', 'fechaCad', 'stock', 'status', 'archivo')
+        fields = ('NombreMedic', 'categoria', 'descripcion', 'fechaCad', 'stock', 'status','precio' ,'archivo')
         widgets = {
             'archivo': CustomClearableFieldInput
         }
+class FormEditar(forms.ModelForm):
+    class Meta:
+        model = Archivos
+        fields = ['NombreMedic']

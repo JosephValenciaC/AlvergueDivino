@@ -15,7 +15,9 @@
                 <th>Descripcion</th>
                 <th>Fecha de Caduc.</th>
                 <th>Stock</th>
+                <th>Precio</th>
                 <th>Status</th>
+                <!-- <th>Acciones</th> -->
                 
 
             </tr>
@@ -32,7 +34,11 @@
                 <td>{{ medicamento.descripcion }}</td>
                 <td>{{ medicamento.fechaCad }}</td>
                 <td>{{ medicamento.stock }}</td>
+                <td>$ {{ medicamento.precio }}</td>
                 <td>{{ medicamento.status }}</td>
+                <!-- <td>
+                    <a href="{% url 'consultarMedicamento' medicamento.id %}" class="btn btn-primary">Editar</a> -->
+
               
             </tr>
             {% endfor %}

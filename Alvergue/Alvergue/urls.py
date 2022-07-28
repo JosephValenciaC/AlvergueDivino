@@ -26,6 +26,8 @@ urlpatterns = [
     path('about/', views.about, name='About'),
     path('subir',registros_views.archivos,name="Subir"),
     path('consultasSQL',registros_views.consultasSQL,name="sql"),
+    path('consultarMedicamento/<int:id>',registros_views.consultarMedicamento,name="consultarMedicamento"),
+    path('editarSalida/<int:id>',registros_views.editarSalida,name="editarSalida"),
 ]
 
 if settings.DEBUG:

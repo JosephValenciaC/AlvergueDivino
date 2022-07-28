@@ -5,7 +5,7 @@
 {%csrf_token%}
 <div class="mb-3">
     <label class="form-label">Nombre Medicamento</label>
-    <input type="text" name="NombreMedic" class="form-control">
+    <input type="text" name="NombreMedic" required class="form-control">
   </div>
   <div class="mb-3">
     <label class="form-label">Categoria</label>
@@ -17,15 +17,20 @@
   </div>
     <div class="mb-3">
         <label class="form-label">Descripcion</label>
-        <textarea name="descripcion" class="form-control" id="" cols="10" rows="5"></textarea>
+        <textarea name="descripcion" class="form-control" required id="" cols="10" rows="5"></textarea>
         </div>
     <div class="mb-3"> 
         <label class="form-label">Fecha de Caducidad</label>
-        <input type="date" name="fechaCad" class="form-control">
+        <input type="date" name="fechaCad" required class="form-control">
         </div>
     <div class="mb-3">
         <label class="form-label">Cantidades</label>
-        <input type="number" name="stock" class="form-control">
+        <input type="number" name="stock" required class="form-control">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text"> Precio: $</span>
+            <input type="text" class="form-control" required name="precio" aria-label="Amount (to the nearest dollar)">
+            <span class="input-group-text">.00</span>
         </div>
     <div class="mb-3">
         <label class="form-label">Status</label>

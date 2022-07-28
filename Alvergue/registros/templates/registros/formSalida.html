@@ -1,0 +1,41 @@
+{% extends 'inicio/encabezado.html' %} {% block titulo %} Medicina {% endblock %} {% comment %} Contenido Cursos {% endcomment %} {% block contenido %}
+
+
+
+   
+    
+
+
+
+<div class="card m-auto" style="width: 18rem;">
+<!-- Formulario -->
+<form class="form-horizontal" action="{% url 'editarSalida' medicamento.id %}" method="POST" role="form">
+    {%csrf_token%}
+     <img src="{{medicamento.archivo.url}}" class="card-img-top" alt="...">
+     <div class="card-body">
+        <li class="list-group-item"><input value="{{medicamento.NombreMedic}}" name="NombreMedic" type="text" class="form-control"> </li>  
+            
+           <ul class="list-group list-group-flush">
+                <li class="list-group-item">Tipo: {{medicamento.categoria}} </li>
+                <li class="list-group-item">Descripcion: {{medicamento.descripcion}} </li>
+                <li class="list-group-item">Caducidad: {{medicamento.fechaCad}} </li>
+                <li class="list-group-item">En existencia: {{medicamento.stock}} </li>
+                <li class="list-group-item">Precio: ${{medicamento.precio}} </li>
+                <li class="list-group-item">Status: {{medicamento.status}} </li>
+            </ul>
+
+            <div class="form-actions text-right">
+                <input type="submit" value="Enviar" class="btn btn-primary">
+            </div>
+
+        </div>
+    </div>
+</form>
+</div>
+</div>
+</div>
+
+
+
+
+{%endblock%}

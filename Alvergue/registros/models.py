@@ -28,6 +28,7 @@ class Archivos(models.Model):
     fechaCad = models.CharField(null=True, max_length=50, verbose_name="Fecha de Caducidad")
     stock = models.IntegerField(null=True, verbose_name="Stock")
     status = models.CharField(null=True, max_length=100, verbose_name="Status")
+    precio = models.IntegerField(null=True, verbose_name="Precio")
     archivo = models.FileField(upload_to="archivos", null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de Creacion")
     update  = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de Actualizacion")
