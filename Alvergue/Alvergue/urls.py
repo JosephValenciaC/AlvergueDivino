@@ -23,8 +23,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.principal, name='Principal'),
     path('contacto/', views.contacto, name='Contacto'),
-    path('registros/', registros_views.registros, name='Registros'),
     path('about/', views.about, name='About'),
+    path('subir',registros_views.archivos,name="Subir"),
+    path('consultasSQL',registros_views.consultasSQL,name="sql"),
 ]
 
 if settings.DEBUG:

@@ -16,7 +16,7 @@
                 <th>Fecha de Caduc.</th>
                 <th>Stock</th>
                 <th>Status</th>
-                <th>Registros</th>
+                
 
             </tr>
         </thead>
@@ -24,16 +24,16 @@
             {% for medicamento in medicamentos %}
             <tr>
                 <td class="text-center ">
-                    <image src="{{medicamento.imagen.url }} " alt="{{ medicamento.NombreMedic }} " class="img-fluid " width="100 ">
+                    <image src="{{medicamento.archivo.url }} " class="img-fluid " width="100 ">
                 </td>
                 <td>{{ medicamento.categoria }}</td>
                 <td>{{ medicamento.NombreMedic }}</td>
-                <td>{{ medicamento.clave }}</td>
-                <td>{{ medicamento.Descripcion }}</td>
-                <td>{{ medicamento.FechaCad }}</td>
+                <td>{{ medicamento.id }}</td>
+                <td>{{ medicamento.descripcion }}</td>
+                <td>{{ medicamento.fechaCad }}</td>
                 <td>{{ medicamento.stock }}</td>
                 <td>{{ medicamento.status }}</td>
-                <td>{{ medicamento.created }}</td>
+              
             </tr>
             {% endfor %}
 
