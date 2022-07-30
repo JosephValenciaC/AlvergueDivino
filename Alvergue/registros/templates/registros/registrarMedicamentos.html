@@ -4,43 +4,39 @@
 <form class="form-horizontal" action="{% url 'Subir'%}" method="POST" role="form" enctype="multipart/form-data">
 {%csrf_token%}
 <div class="mb-3">
-    <label class="form-label">Nombre Medicamento</label>
-    <input type="text" name="NombreMedic" required class="form-control">
+    <label class="form-label">Nombre del Paciente</label>
+    <input type="text" name="NombrePaciente" required class="form-control">
   </div>
   <div class="mb-3">
-    <label class="form-label">Categoria</label>
-    <select class="form-select" name="categoria" aria-label="Default select example">
-        <option value="Pastillas">Pastilla</option>
-        <option value="Liquido">Liquido</option>
-        <option value="Inyeccion">Inyeccion</option>
+        <label class="form-label">Edad</label>
+        <input type="number" name="Edad" required class="form-control">
+        </div>
+  <div class="mb-3">
+    <label class="form-label">Sexo</label>
+    <select class="form-select" name="Sexo" aria-label="Default select example">
+        <option value="Hombre">H</option>
+        <option value="Mujer">M</option>
       </select>
   </div>
-    <div class="mb-3">
-        <label class="form-label">Descripcion</label>
-        <textarea name="descripcion" class="form-control" required id="" cols="10" rows="5"></textarea>
-        </div>
+    
     <div class="mb-3"> 
-        <label class="form-label">Fecha de Caducidad</label>
-        <input type="date" name="fechaCad" required class="form-control">
+        <label class="form-label">CURP</label>
+        <input type="text" name="CURP" required class="form-control">
         </div>
     <div class="mb-3">
-        <label class="form-label">Cantidades</label>
-        <input type="number" name="stock" required class="form-control">
-        </div>
-        <div class="input-group mb-3">
-            <span class="input-group-text"> Precio: $</span>
-            <input type="text" class="form-control" required name="precio" aria-label="Amount (to the nearest dollar)">
-            <span class="input-group-text">.00</span>
+        <label class="form-label">Direccion</label>
+        <input type="text" name="Direccion" required class="form-control">
         </div>
     <div class="mb-3">
-        <label class="form-label">Status</label>
-        <select class="form-select" name="status" aria-label="Default select example">
-            <option value="Activado">Activo</option>
-            <option value="Desactivado">Desactivado</option>
-          </select>
+        <label class="form-label">Telefono</label>
+        <input type="number" name="Telefono" required class="form-control">
         </div>
     <div class="mb-3">
-        <label class="form-label">Imagen</label>
+        <label class="form-label">Medicamentos a Tomar</label>
+        <textarea type="text" name="Medicamento" required class="form-control"> </textarea>
+        </div>
+    <div class="mb-3">
+        <label class="form-label">Identificacion</label>
         <input type="file" name="archivo" class="form-control">
         </div>
 

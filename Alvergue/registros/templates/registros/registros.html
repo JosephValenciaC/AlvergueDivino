@@ -1,13 +1,19 @@
 {% extends 'inicio/encabezado.html' %} {% block titulo %} Medicina {% endblock %} {% comment %} Contenido Cursos {% endcomment %} {% block contenido %}
 <br><br>
 
-<div class="card-body m-5" style="background-color: rgba(64, 124, 229, 0.527);">
+ <div class="btn-group" role="group" style="position: absolute; padding-left: 50px; padding-top:10px;" aria-label="Basic outlined example">
+    <a href="{% url 'Registros' %}" class="btn btn-outline-primary">General</a>
+     <a href="{% url 'stock' %}" class="btn btn-outline-primary">Stock Bajos </a>   
+    </div>
+<div class="card-body m-5" style="background-color: rgba(32, 50, 80, 0.527); border-radius: 20px;">
     <div class="card-title">
         <h1 class="text-center" style="font-style:none;">Medicamentos</h1>
     </div>
-    <table class="table table-striped ">
-        <thead>
-            <tr>
+   
+    
+    <table class="table">
+        <thead class="thead-dark">
+            <tr class="text-center">
                 <th>Imagen</th>
                 <th>Categoria</th>
                 <th>Nombre del Medicamento</th>
@@ -24,15 +30,15 @@
         </thead>
         <tbody>
             {% for medicamento in medicamentos %}
-            <tr>
+            <tr class="text-center">
                 <td class="text-center ">
-                    <image src="{{medicamento.archivo.url }} " class="img-fluid " width="100 ">
+                    <image src="{{medicamento.imagen.url }} " class="img-fluid " width="100 ">
                 </td>
                 <td>{{ medicamento.categoria }}</td>
                 <td>{{ medicamento.NombreMedic }}</td>
                 <td>{{ medicamento.id }}</td>
-                <td>{{ medicamento.descripcion }}</td>
-                <td>{{ medicamento.fechaCad }}</td>
+                <td>{{ medicamento.Descripcion }}</td>
+                <td>{{ medicamento.FechaCad }}</td>
                 <td>{{ medicamento.stock }}</td>
                 <td>$ {{ medicamento.precio }}</td>
                 <td>{{ medicamento.status }}</td>

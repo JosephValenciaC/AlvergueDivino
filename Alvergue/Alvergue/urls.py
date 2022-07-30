@@ -24,10 +24,13 @@ urlpatterns = [
     path('', views.principal, name='Principal'),
     path('contacto/', views.contacto, name='Contacto'),
     path('about/', views.about, name='About'),
+    path('registros/', registros_views.medicamentos, name='Registros'),
     path('subir',registros_views.archivos,name="Subir"),
     path('consultasSQL',registros_views.consultasSQL,name="sql"),
     path('consultarMedicamento/<int:id>',registros_views.consultarMedicamento,name="consultarMedicamento"),
     path('editarSalida/<int:id>',registros_views.editarSalida,name="editarSalida"),
+    path('eliminar/<int:id>',registros_views.eliminar,name="eliminar"),
+    path('stock',registros_views.stock,name="stock"),
 ]
 
 if settings.DEBUG:

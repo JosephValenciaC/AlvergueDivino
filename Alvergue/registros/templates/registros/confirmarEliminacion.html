@@ -1,0 +1,25 @@
+
+{% extends 'inicio/encabezado.html' %} {% block titulo %} Pacientes {% endblock %} {% comment %} Contenido Cursos {% endcomment %} {% block contenido %}
+<br><br>
+
+
+
+
+
+
+
+
+
+
+<form method="POST">
+    {% csrf_token %}
+    <!-- Alert -->
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>¿Estas seguro de eliminar al paciente?</strong>
+  
+    <!-- /Alert -->
+    <button type="submit" class="btn btn-danger">Si</button>
+    <a href="{% url 'sql' %}" class="btn btn-primary">No</a>
+</form>
+{% endblock %}
+

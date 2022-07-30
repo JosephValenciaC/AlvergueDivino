@@ -9,11 +9,11 @@ class CustomClearableFieldInput(ClearableFileInput):
 class FormArchivos(ModelForm):
     class Meta:
         model = Archivos
-        fields = ('NombreMedic', 'categoria', 'descripcion', 'fechaCad', 'stock', 'status','precio' ,'archivo')
+        fields = ('NombrePaciente', 'Edad', 'Sexo', 'CURP', 'Direccion', 'Telefono','Medicamento' ,'archivo')
         widgets = {
             'archivo': CustomClearableFieldInput
         }
 class FormEditar(forms.ModelForm):
     class Meta:
         model = Archivos
-        fields = ['NombreMedic']
+        fields = ['NombrePaciente', 'Edad', 'Sexo', 'CURP', 'Direccion', 'Telefono','Medicamento' ,'archivo']

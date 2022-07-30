@@ -13,8 +13,8 @@ admin.site.register(Medicamentos, AdministartModelo)
 
 class AdministrarArchivcos(admin.ModelAdmin):
     readonly_fields: Sequence[str] = ('created', 'update')
-    list_display = ('NombreMedic' ,'stock')
+    list_display = ('NombrePaciente' ,'Telefono')
     date_hierarchy: Optional[str] = 'created'
-    list_filter = ('NombreMedic','categoria')
+    list_filter = ('NombrePaciente','Sexo')
 
 admin.site.register(Archivos, AdministrarArchivcos)

@@ -1,0 +1,60 @@
+{% extends 'inicio/encabezado.html' %} {% block titulo %} Pacientes {% endblock %} {% comment %} Contenido Cursos {% endcomment %} {% block contenido %}
+<br><br>
+
+<div class="card-body m-5" style="background-color: rgba(61, 114, 104, 0.532); border-radius: 20px;">
+    <div class="card-title">
+        <h1 class="text-center" style="font-style:none;">Pacientes Registrados</h1>
+    </div>
+
+
+   
+       
+    <table class="table">
+        <thead>
+            <tr class="text-center">
+                <th>ID</th>
+                <th>Imagen</th>
+                <th>Nombre del Paciente</th>
+                <th>Edad</th>
+                <th>Sexo</th>
+                <th>CURP</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Medicamento Asignado</th>
+                <th>Acciones</th>
+                
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for paciente in pacientes %}
+           
+            <tr class="text-center">
+                 <td>{{ paciente.id }}</td>
+                <td class="text-center ">
+                    <image src="{{paciente.archivo.url }} " class="img-fluid " width="100 ">
+                </td>
+                <td>{{ paciente.NombrePaciente }}</td>
+                <td>{{ paciente.Edad }}</td>
+                <td>{{ paciente.Sexo }}</td>
+                <td>{{ paciente.CURP }}</td>
+                <td>{{ paciente.Direccion }}</td>
+                <td>{{ paciente.Telefono }}</td>
+                <td>{{ paciente.Medicamento }}</td>
+                
+                <td>
+                    <a href="{% url 'consultarMedicamento' paciente.id %}" class="btn btn-primary">Editar</a>
+                    <a href="{% url 'eliminar' paciente.id %}" class="btn btn-danger"><i class="entypo-cancel"></i>Eliminar</a>
+                </td>
+
+              
+            </tr>
+            {% endfor %}
+
+    </table>
+</div>
+</div>
+</div>
+
+
+{% endblock%}

@@ -4,31 +4,34 @@ from .models import Medicamentos, Archivos
 from .forms import FormArchivos, FormEditar
 from django.contrib import messages 
 
+def medicamentos(request):
+    medicamentos = Medicamentos.objects.all()
+    return render(request, 'registros/registros.html', {'medicamentos': medicamentos})
 
 def archivos(request):
     if request.method == 'POST':
         form = FormArchivos(request.POST, request.FILES)
         if form.is_valid():
-            NombreMedic =request.POST['NombreMedic']
-            categoria =request.POST['categoria']
-            descripcion =request.POST['descripcion']
-            fechaCad =request.POST['fechaCad']
-            stock =request.POST['stock']
-            status =request.POST['status']
-            precio =request.POST['precio']
+            NombrePaciente =request.POST['NombrePaciente']
+            Edad =request.POST['Edad']
+            Sexo =request.POST['Sexo']
+            CURP =request.POST['CURP']
+            Direccion =request.POST['Direccion']
+            Telefono =request.POST['Telefono']
+            Medicamento =request.POST['Medicamento']
             archivo =request.FILES['archivo']
-            insert = Archivos(NombreMedic=NombreMedic, categoria=categoria ,descripcion=descripcion, fechaCad = fechaCad, stock=stock, status = status, precio = precio ,archivo=archivo)
+            insert = Archivos(NombrePaciente=NombrePaciente, Edad=Edad ,Sexo=Sexo, CURP = CURP, Direccion=Direccion, Telefono = Telefono, Medicamento = Medicamento ,archivo=archivo)
             insert.save()
-            medicamentos = Archivos.objects.all()
-            return render(request, 'registros/registros.html', {'medicamentos':medicamentos})
+            pacientes = Archivos.objects.all()
+            return render(request, 'registros/pacientes.html', {'pacientes':pacientes})
         else:
             messages.error(request, 'Error al subir el archivo')
     else:
         return render(request, 'registros/registrarMedicamentos.html', {'archivo':Archivos})
 
 def consultasSQL(request):
-    medicamentos=Archivos.objects.raw('SELECT id, NombreMedic, categoria, descripcion, fechaCad, status, archivo FROM registros_archivos')
-    return render (request, 'registros/registros.html', {'medicamentos':medicamentos})
+    pacientes=Archivos.objects.raw('SELECT id, NombrePaciente, Edad, Sexo, CURP, Direccion, Telefono, Medicamento, archivo  FROM registros_archivos')
+    return render (request, 'registros/pacientes.html', {'pacientes':pacientes})
 
 def consultarMedicamento(request, id):
     medicamento = Archivos.objects.get(id=id)
@@ -36,10 +39,23 @@ def consultarMedicamento(request, id):
 
 # Editar
 def editarSalida(request, id):
-    medicamento = get_object_or_404(Archivos, id=id)
-    form = FormEditar(request.POST, instance=medicamento)
+    paciente = get_object_or_404(Archivos, id=id)
+    form = FormEditar(request.POST, instance=paciente)
     if form.is_valid():
         form.save()
-        medicamentos = Archivos.objects.all()
-        return render(request, 'registros/registros.html', {'medicamentos': medicamentos})
-    return render(request, 'registros/formSalida.html', {'medicamento':medicamento })
+        pacientes = Archivos.objects.all()
+        return render(request, 'registros/pacientes.html', {'pacientes': pacientes})
+    return render(request, 'registros/formSalida.html', {'paciente':paciente })
+
+def eliminar(request, id, confirmacion = 'registros/confirmarEliminacion.html'):
+    paciente = get_object_or_404(Archivos, id=id)
+    if request.method == 'POST':
+        paciente.delete()
+        pacientes = Archivos.objects.all()
+        return render(request, 'registros/pacientes.html', {'pacientes': pacientes})
+    return render(request, confirmacion, {'object': paciente})
+
+
+def stock(request):
+    medicamentos = Medicamentos.objects.filter(stock__lte=5)
+    return render(request, 'registros/registros.html', {'medicamentos': medicamentos})
