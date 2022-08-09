@@ -1,7 +1,14 @@
 
 from django import forms
-from .models import Archivos
+from .models import Archivos, SalidaMedicamentos
 from django.forms import ClearableFileInput, ModelForm
+
+class SalidaForm(ModelForm):
+    class Meta:
+        model = SalidaMedicamentos
+        fields = ['AsignadoA', 'Fecha', 'Medicamento', 'Cantidad', 'archivo']
+
+       
 
 class CustomClearableFieldInput(ClearableFileInput):
     template_with_clear = '<br> <label for="%(clear_checkbox_id)s">%(clear_checkbox_label)s</label> %(clear)s'

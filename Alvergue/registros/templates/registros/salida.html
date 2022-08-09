@@ -1,0 +1,44 @@
+{% extends 'inicio/encabezado.html' %} {% block titulo %} Pacientes {% endblock %} {% comment %} Contenido Cursos {% endcomment %} {% block contenido %}
+<br><br>
+
+<div class="card-body m-5" style="background-color: rgba(61, 114, 104, 0.532); border-radius: 20px;">
+    <div class="card-title">
+        <h1 class="text-center" style="font-style:none;">Medicamentos Asignados</h1>
+    </div>
+
+
+   
+       
+    <table class="table">
+        <thead>
+            <tr class="text-center">
+                <th>Foto de Perfil</th>
+                <th>Nombre</th>
+                <th>Medicamento</th>
+                <th>Cantidad</th>
+                 <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for salida in salidas %}
+           
+            <tr class="text-center">
+                <td class="text-center ">
+                    <image src="{{salida.archivo.url }} " class="img-fluid " width="100 ">
+                </td>
+                <td>{{ salida.AsignadoA }}</td>
+                <td>{{ salida.Medicamento}}</td>
+                <td>{{ salida.Cantidad }}</td>
+                <td>{{ salida.Fecha }}</td>
+
+              
+            </tr>
+            {% endfor %}
+
+    </table>
+</div>
+</div>
+</div>
+
+
+{% endblock%}

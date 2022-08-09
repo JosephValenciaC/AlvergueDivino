@@ -1,6 +1,23 @@
 from django.db import models
 
 
+class SalidaMedicamentos(models.Model):
+    id = models.AutoField(primary_key=True)
+    AsignadoA = models.CharField(max_length=100)
+    Fecha = models.DateField()
+    Medicamento = models.ForeignKey('Medicamentos', on_delete=models.CASCADE)
+    Cantidad = models.IntegerField()
+    archivo = models.FileField(upload_to="archivos", null=True, blank=True, verbose_name="Foto de Perfil")
+    created = models.DateTimeField(auto_now=True, verbose_name="Fecha de creación")
+    update = models.DateTimeField(auto_now=True, verbose_name="Fecha de edición")
+
+    class Meta:
+        verbose_name = 'Salida Medicamentos'
+        verbose_name_plural = 'Salidas Medicamentos'
+
+    def __str__(self):
+        return self.AsignadoA
+    
 
 class Medicamentos(models.Model): #Define la estructura de la tabla
     id = models.AutoField(primary_key=True, verbose_name='Clave')

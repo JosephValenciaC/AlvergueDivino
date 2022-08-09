@@ -1,7 +1,7 @@
 from email import message
 from django.shortcuts import get_object_or_404, render
-from .models import Medicamentos, Archivos
-from .forms import FormArchivos, FormEditar
+from .models import Medicamentos, Archivos, SalidaMedicamentos
+from .forms import FormArchivos, FormEditar, SalidaForm
 from django.contrib import messages 
 
 def medicamentos(request):
@@ -59,3 +59,26 @@ def eliminar(request, id, confirmacion = 'registros/confirmarEliminacion.html'):
 def stock(request):
     medicamentos = Medicamentos.objects.filter(stock__lte=5)
     return render(request, 'registros/registros.html', {'medicamentos': medicamentos})
+
+
+def Salida(request):
+    if request.method == 'POST':
+        form = SalidaForm(request.POST, request.FILES)
+        if form.is_valid():
+            AsignadoA =request.POST['AsignadoA']
+            Fecha =request.POST['Fecha']
+            Medicamento =request.POST['Medicamento']
+            Cantidad =request.POST['Cantidad']
+            archivo =request.FILES['archivo']
+            insert = SalidaMedicamentos(AsignadoA=AsignadoA, Fecha=Fecha , Medicamento = Medicamento, Cantidad=Cantidad, archivo=archivo)
+            insert.save()
+            salidas = SalidaMedicamentos.objects.all()
+            return render(request, 'registros/salida.html', {'salidas':salidas})
+        else:
+            messages.error(request, 'Error al subir el archivo')
+    else:
+        return render(request, 'registros/salida.html', {'salida':SalidaMedicamentos})
+
+def SalidaSQL(request):
+    salidas=SalidaMedicamentos.objects.raw('SELECT id, AsignadoA, Fecha,  Cantidad, archivo  FROM registros_salidaMedicamentos')
+    return render (request, 'registros/salida.html', {'salidas':salidas})

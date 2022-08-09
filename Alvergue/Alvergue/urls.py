@@ -31,6 +31,7 @@ urlpatterns = [
     path('editarSalida/<int:id>',registros_views.editarSalida,name="editarSalida"),
     path('eliminar/<int:id>',registros_views.eliminar,name="eliminar"),
     path('stock',registros_views.stock,name="stock"),
+    path('salida',registros_views.SalidaSQL,name="salida"),
 ]
 
 if settings.DEBUG:

@@ -1,7 +1,15 @@
 from typing import Optional, Sequence
 from django.contrib import admin
+from .models import Archivos, Medicamentos, SalidaMedicamentos
 
-from .models import Archivos, Medicamentos
+class AdmiistrarSalida(admin.ModelAdmin):
+    list_display = ('AsignadoA', 'Fecha', 'Medicamento', 'Cantidad')
+    list_filter = ('AsignadoA', 'Fecha', 'Medicamento', 'Cantidad')
+    search_fields = ('AsignadoA', 'Fecha', 'Medicamento', 'Cantidad')
+    list_per_page = 2
+    list_display_links = ('AsignadoA', 'Fecha', 'Medicamento', 'Cantidad')
+
+admin.site.register(SalidaMedicamentos, AdmiistrarSalida)
 
 class AdministartModelo(admin.ModelAdmin):
     readonly_fields: Sequence[str] = ('created', 'update')

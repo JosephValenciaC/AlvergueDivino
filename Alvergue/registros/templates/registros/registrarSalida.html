@@ -1,0 +1,23 @@
+{% extends 'inicio/encabezado.html' %} {% block titulo %} Medicina {% endblock %} {% comment %} Contenido Cursos {% endcomment %} {% block contenido %}
+
+<div class="card" style="width: 500px; margin-left: 500px; padding: 20px;">
+<form class="form-horizontal" action="{% url 'Subir'%}" method="POST" role="form" enctype="multipart/form-data">
+{%csrf_token%}
+<div class="mb-3">
+    <label class="form-label">Nombre a quien Fue Asignado</label>
+    <input type="text" name="NombrePaciente" required class="form-control">
+  </div>
+ 
+    <div class="mb-3">
+        <label class="form-label">Identificacion</label>
+        <input type="file" name="archivo" class="form-control">
+        </div>
+
+        <div class="form-actions text-right">
+            <input type="submit" value="Enviar" class="btn btn-primary">
+        </div>
+</form>
+
+ </div>
+ <br>
+    {% endblock%}
