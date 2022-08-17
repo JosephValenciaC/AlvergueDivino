@@ -1,15 +1,8 @@
 {% extends 'inicio/encabezado.html' %} {% block titulo %} Medicina {% endblock %} {% comment %} Contenido Cursos {% endcomment %} {% block contenido %}
 
-
-
-   
-    
-
-
-
 <div class="card m-5 p-2 m-auto" style="width: 600px;">
 <!-- Formulario -->
-<form class="form-horizontal" action="{% url 'editarSalida' medicamento.id %}" method="POST" role="form">
+<form class="form-horizontal" action="{% url 'editarPaciene' medicamento.id %}" method="POST" role="form">
     {%csrf_token%}
     <div class="form-group">
      <img src="{{medicamento.archivo.url}}" class="card-img-top m-auto" style="width:250px;" alt="...">

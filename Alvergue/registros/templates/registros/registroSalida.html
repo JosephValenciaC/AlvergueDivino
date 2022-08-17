@@ -1,0 +1,46 @@
+{% extends 'inicio/encabezado.html' %} {% block titulo %} Registro Salida {% endblock %} {% comment %} Contenido Cursos {% endcomment %} {% block contenido %}
+
+
+<div class="card m-5 p-2 m-auto" style="width: 600px;">
+<!-- Formulario -->
+<form class="form-horizontal" action="{% url 'SubirSalida'%}" method="POST" role="form" enctype="multipart/form-data">
+    {%csrf_token%}
+    <div class="card-body">
+        <div class="form-group">
+            <label class="form-label">Asignado a:</label>
+            <select class="form-select" name="AsignadoA" aria-label="Default select example">
+                <option value="Doctor Juarez">Doctor Juarez</option>
+                <option value="Doctor Josue">Doctor Josue</option>
+                <option value="Doctora Juan">Doctora Telles</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Fecha:</label>
+            <input type="date" name="Fecha" required class="form-control">
+        </div>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Medicamento Asignado:</label>
+            <input type="text" name="Medicamento" required class="form-control">
+        </div>
+        <div class="form-group">
+            <label class="form-label">Cantidad</label>
+            <input type="number" name="Cantidad" required class="form-control">
+        </div>
+        <div class="form-group">
+            <label class="form-label">Telefono</label>
+            <input type="number" name="Telefono" required class="form-control" value="{{medicamento.Telefono}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Medicamento a Tomar:</label>
+            <input type="file" name="archivo2" class="form-control">
+            </div>
+        <div class="form-actions text-right">
+            <input type="submit" value="Enviar" class="btn btn-primary">
+        </div>
+</form>
+</div>
+
+
+
+{%endblock%}

@@ -6,7 +6,11 @@ from django.forms import ClearableFileInput, ModelForm
 class SalidaForm(ModelForm):
     class Meta:
         model = SalidaMedicamentos
-        fields = ['AsignadoA', 'Fecha', 'Medicamento', 'Cantidad', 'archivo']
+        fields = ['AsignadoA', 'Fecha', 'Medicamento', 'Cantidad', 'archivo2']
+        widgets = {
+            'archivo2': ClearableFileInput
+        }
+
 
        
 

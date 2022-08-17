@@ -43,7 +43,7 @@
                 <td>{{ paciente.Medicamento }}</td>
                 
                 <td>
-                    <a href="{% url 'consultarMedicamento' paciente.id %}" class="btn btn-primary">Editar</a>
+                    <a href="{% url 'consultarPaciente' paciente.id %}" class="btn btn-primary">Editar</a>
                     <a href="{% url 'eliminar' paciente.id %}" class="btn btn-danger"><i class="entypo-cancel"></i>Eliminar</a>
                 </td>
 

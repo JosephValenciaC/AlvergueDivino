@@ -26,12 +26,14 @@ urlpatterns = [
     path('about/', views.about, name='About'),
     path('registros/', registros_views.medicamentos, name='Registros'),
     path('subir',registros_views.archivos,name="Subir"),
-    path('consultasSQL',registros_views.consultasSQL,name="sql"),
-    path('consultarMedicamento/<int:id>',registros_views.consultarMedicamento,name="consultarMedicamento"),
-    path('editarSalida/<int:id>',registros_views.editarSalida,name="editarSalida"),
+    path('consultaSQL',registros_views.consultaSQL, name='sql'),
+    path('consultarPaciente/<int:id>',registros_views.consultarPaciente,name="consultarPaciente"),
+    path('editarPaciene/<int:id>',registros_views.editarPaciene,name="editarPaciene"),
     path('eliminar/<int:id>',registros_views.eliminar,name="eliminar"),
     path('stock',registros_views.stock,name="stock"),
     path('salida',registros_views.SalidaSQL,name="salida"),
+    path('registrarSalida',registros_views.registrarSalida,name="registrarSalida"),
+    path('subirSalida',registros_views.Salida,name="SubirSalida"),
 ]
 
 if settings.DEBUG:
