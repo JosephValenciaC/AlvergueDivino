@@ -1,2 +1,19 @@
-{% extends 'inicio/encabezado.html' %} {% block titulo %} About {% endblock %} {% comment %} Contenido Cursos {% endcomment %} {% block contenido %} {% load static %}
-<br><br> {% endblock %}
+{% extends 'inicio/encabezado.html' %} {% block titulo %} About {% endblock %} {% block contenido %} {% load static %}
+<div class="m-5" style="background-color: cadetblue; border-radius: 20px;">
+    <br><br><br>
+    <center>
+        <img src="{% static 'img/logo.png' %}" style="width: 400px; border-radius: 100%;" class="avatar" alt="Avatar Image">
+    
+    <br>
+    <br>
+    <p style="font-size: 20px; font-family: Verdana, Geneva, Tahoma, sans-serif; color: aliceblue;">
+        Somos una empresa dedicada a la venta y control de medicamentos, con el objetivo de brindar una mejor atención a los pacientes.
+        Somos Albergue Divino, Por un Mexico Mejor para Todos.
+        <br>
+        
+    </p>
+    </center>
+    <br><br>
+</div>
+
+{% endblock %}
